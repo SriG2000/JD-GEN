@@ -8,7 +8,7 @@ from langchain_core.output_parsers import StrOutputParser
 import streamlit as st
 
 def main():
-    llm = ChatOpenAI(model="gpt-4.1-mini-2025-04-14")
+    llm = ChatOpenAI(model="o4-mini")
 
     recruiter_email = "Srivatsav-test@uhcstaffing.com" 
     recruiter_phone_number = "+1 (123) 456-7890"  
