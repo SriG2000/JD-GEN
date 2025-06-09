@@ -15,12 +15,12 @@ def main():
 
     Your task is to convert the following unstructured job description into a polished, structured job posting using the exact format below. 
 
-    **Important Rules:**
-    - Do not make up or assume any missing information.
-    - If a field (e.g., Pay, Benefits, Schedule, etc.) is not available in the input, leave it **empty**.
-    - If any pay-related detail such as **overtime differential** is mentioned (e.g., "+$10/hr for overtime"), include it in the **Pay** field even if the base rate is missing.
-    - Always refer to the company as **UHC Staffing**.
-    - Keep the format exactly as provided.
+    **Important Instructions:**
+    - Do not guess or invent missing information.
+    - If a field such as Location, Start Date, Employment Type, or Pay is not explicitly stated in the input, leave it **blank**.
+    - If any pay-related detail like **overtime** is present (e.g., "+$10/hr overtime"), include that in the **Pay** field, even if the base rate is missing.
+    - The following sections must remain **exactly as provided**:  
+    `About UHC Staffing`, `Why Choose UHC Staffing?`, `Ready to Join Our Team?`, `Benefits`, and `Schedule Options`.
 
     ---
 
@@ -31,11 +31,11 @@ def main():
     Start Date:  
     Employment Type:  
     Shift: Flexible  
-    Pay:   
+    Pay:  
     Expected Hours:  
 
     About UHC Staffing  
-    UHC Staffing is dedicated to delivering exceptional healthcare solutions by providing compassionate and professional nursing services. We are looking for skilled [Job Title, plural form] to join our team, where you will make a meaningful impact on patients' lives in a supportive and collaborative environment.
+    UHC Staffing is dedicated to delivering exceptional healthcare solutions by providing compassionate and professional nursing services. We are looking for skilled Licensed Practical Nurses (LPNs) to join our team, where you will make a meaningful impact on patients' lives in a supportive and collaborative environment.
 
     Why Choose UHC Staffing?  
     - Flexible Work Options: Full-time, travel, or contract positions tailored to your career goals.  
@@ -58,7 +58,7 @@ def main():
     - [List mandatory certifications like BLS]
 
     Ready to Join Our Team?  
-    If you are a motivated [Job Title] looking to grow your career, we’d love to hear from you! Join UHC Staffing to make a lasting impact on patients' lives with your expertise and compassion.  
+    If you are a motivated Licensed Practical Nurse looking to grow your career, we’d love to hear from you! Join UHC Staffing to make a lasting impact on patients' lives with your expertise and compassion.  
     Recruiter Email ID:  
     Phone:  
     Apply today to start your journey with UHC Staffing!
@@ -83,8 +83,9 @@ def main():
 
     ---
 
-    Now rewrite the job description in the UHC Staffing format above. Only use information explicitly mentioned in the input.
+    Now rewrite the job description using the UHC Staffing format above. Populate only the appropriate fields, and do not alter the static sections.
     """
+
 
 
     prompt = ChatPromptTemplate.from_messages([
