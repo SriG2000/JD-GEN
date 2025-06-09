@@ -10,7 +10,7 @@ import streamlit as st
 def main():
     llm = ChatOpenAI(model="o4-mini")
 
-    recruiter_email = "recruiter@uhcstaffing.com"  # <-- Dynamically set this as needed
+    recruiter_email = "Srivatsav-test@uhcstaffing.com"  # <-- Dynamically set this as needed
 
     standard = """
     You are a professional recruitment content writer for **UHC Staffing**.
