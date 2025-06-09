@@ -10,6 +10,8 @@ import streamlit as st
 def main():
     llm = ChatOpenAI(model="o4-mini")
 
+    recruiter_email = "recruiter@uhcstaffing.com"  # <-- Dynamically set this as needed
+
     standard = """
     You are a professional recruitment content writer for **UHC Staffing**.
 
@@ -86,8 +88,6 @@ def main():
     Now rewrite the job description using the UHC Staffing format above. Populate only the appropriate fields, and do not alter the static sections.
     """
 
-
-
     prompt = ChatPromptTemplate.from_messages([
         ("system", standard),
         ("user", "{input}")
@@ -103,6 +103,10 @@ def main():
     if st.button("Generate Job Description based on UHC Format"):
         if jd:
             result = chain.invoke(input=jd)
+
+            # Inject recruiter email into final result
+            result = result.replace("Recruiter Email ID:", f"Recruiter Email ID: {recruiter_email}")
+
             st.subheader("Formatted UHC Job Description")
             st.write(result)
         else:
