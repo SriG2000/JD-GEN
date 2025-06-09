@@ -2,22 +2,24 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 import streamlit as st
 
-
-
 def main():
     llm = ChatOpenAI(model="o4-mini")
 
-    standard="""
-
+    standard = """
 You are a professional recruitment content writer for **UHC Staffing**.
 
-Your task is to convert the following unstructured job description into a polished, structured job posting using the exact format below. Do not deviate from this format or naming — always refer to the company as **UHC Staffing**.
+Your task is to convert the following unstructured job description into a polished, structured job posting using the exact format below. 
+
+**Important Rules:**
+- Do not make up or assume any missing information.
+- If a field (e.g., Pay, Benefits, Schedule, etc.) is not available in the input, leave it **empty** or retain the placeholder like [Insert Pay].
+- Always refer to the company as **UHC Staffing**.
+- Keep the format exactly as provided.
 
 ---
 
@@ -80,7 +82,7 @@ Schedule Options:
 
 ---
 
-Now rewrite the job description in the UHC Staffing format above.
+Now rewrite the job description in the UHC Staffing format above. Only use information explicitly mentioned in the input.
 """
 
     prompt = ChatPromptTemplate.from_messages([
@@ -89,15 +91,19 @@ Now rewrite the job description in the UHC Staffing format above.
     ])
 
     chain = prompt | llm | StrOutputParser()
+
     st.title("UHC Staffing Job Description Generator")
-    st.write("Enter the job details below to generate a job description.")
+    st.write("Paste your unstructured job description below to convert it to UHC's official format (no guessing for missing info).")
+
     jd = st.text_area("Enter your job description here", height=300)
-    if st.button("Generate Job Description based on Industry standards"):
+
+    if st.button("Generate Job Description based on UHC Format"):
         if jd:
             result = chain.invoke(input=jd)
+            st.subheader("Formatted UHC Job Description")
             st.write(result)
         else:
             st.warning("Please enter job details before generating.")
+
 if __name__ == "__main__":
     main()
-
