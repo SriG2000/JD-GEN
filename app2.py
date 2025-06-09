@@ -89,7 +89,7 @@ Now rewrite the job description in the UHC Staffing format above.
     ])
 
     chain = prompt | llm | StrOutputParser()
-    st.title("Job Description Generator")
+    st.title("UHC Staffing Job Description Generator")
     st.write("Enter the job details below to generate a job description.")
     jd = st.text_area("Enter your job description here", height=300)
     if st.button("Generate Job Description based on Industry standards"):
