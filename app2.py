@@ -9,8 +9,7 @@ import streamlit as st
 
 def main():
     llm = ChatOpenAI(model="o4-mini")
-    st.write("Paste your template).")
-    pt = st.text_area("Enter your template here", height=300)
+
     standard = """
     You are a professional recruitment content writer for **UHC Staffing**.
 
@@ -86,6 +85,7 @@ def main():
 
     Now rewrite the job description in the UHC Staffing format above. Only use information explicitly mentioned in the input.
     """
+
 
     prompt = ChatPromptTemplate.from_messages([
         ("system", standard),
